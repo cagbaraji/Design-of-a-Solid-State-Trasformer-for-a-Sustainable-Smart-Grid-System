@@ -1,0 +1,14 @@
+function [PWM2, PWM1] = fcn(time, frequency, phase)
+
+T_switching = 1/frequency;
+PWM1 = 0;
+PWM2 = 0;
+x = mod(time, T_switching);
+if x<T_switching/2
+	PWM1 = 1;
+end
+t_phi = T_switching+phase/360;
+y= mod(time+t_phi, T_switching);
+if y<T_switching/2
+	PWM2 = 1;
+end
